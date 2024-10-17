@@ -175,6 +175,7 @@ Solo = Master Ranger = 1 | 1 | 1 | 1 | 1 | 1 | 2 = 250
 Base = Master Ranger = 1 | 1 | 1 | 1 | 1 | 1 | 4 = 250
 Base = MechaJouster = 1 | 2 | 3 | 4 = Use if Available
 Base = MindBreaker = 1 | 2 | 3 | 4 = Use if Available
+Base = Martial Artist = 1 | 2 | 3 | 4 = Use if Available
 Base = Mystical Dark Caster = 1 | 2 | 3 | 4 = Use if Available
 Base = Naval Commander = 3WW10000 | 4 | 2 | 1 = 250
 Base = Nechronomancer = 4 H<60S | 3 | 2 | 1 = Use if Available
