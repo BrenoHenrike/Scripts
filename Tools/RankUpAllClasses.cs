@@ -17,6 +17,9 @@ public class RankUpAll
     public CoreFarms Farm = new();
     public CoreAdvanced Adv = new();
 
+    public string OptionsStorage = "RankUpAll";
+    public bool DontPreconfigure = true;
+    
     public List<IOption> Options = new()
     {
         new Option<bool>("inclBank", "Include Bank", "If True, will also rank up all unranked classes in the bank", false),
