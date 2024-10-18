@@ -100,7 +100,15 @@ public class BrightOak
 
         // Restoring Nature
         if (!Story.QuestProgression(4660))
-            NaturePotion(1);
+        {
+            Core.AddDrop("Restoration of Nature Potion");
+            Core.EnsureAccept(4660);
+            Core.BuyItem("sandsea", 245, "Water of Life");
+            Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
+            Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
+            Core.EnsureComplete(4660);
+            Bot.Wait.ForPickup("Restoration of Nature Potion");
+        }
 
         // Unlock the Guardian's First Rune
         if (!Story.QuestProgression(4661))
@@ -346,66 +354,66 @@ public class BrightOak
         }
 
         Story.MapItemQuest(4808, "Gaiazor", 4210);
+    }
+
+    public void RavinosBrightgladePart3()
+    {
+        if (Core.isCompletedBefore(4810))
+            return;
+
+        LapisPart2();
+
+        // Defeat the Traitor
+        Story.KillQuest(4809, "Gaiazor", "Nevanna");
+
+        // Defeat the Beast
+        Story.KillQuest(4810, "Gaiazor", "Gaiazor");
+    }
+
+    public void ExtraREP(bool Extra = true)
+    {
+        if (!Extra)
+            return;
+
+        if (Core.isCompletedBefore(4472))
+            return;
+
+        // Catering to Craftsmanship
+        if (Daily.CheckDailyv2(4471))
+        {
+            Core.EnsureAccept(4471);
+            Core.HuntMonster("Brightoak", "Bright Treeant", "Treeant Trunk", 5);
+            Core.KillMonster("Brightoak", "r8", "Spawn", "Wolfwood", "Wolfwood Fur", 7);
+            Core.EnsureComplete(4471);
         }
 
-        public void RavinosBrightgladePart3()
+        // Some Disassembly Required   
+        if (Daily.CheckDailyv2(4472))
         {
-            if (Core.isCompletedBefore(4810))
-                return;
-
-            LapisPart2();
-
-            // Defeat the Traitor
-            Story.KillQuest(4809, "Gaiazor", "Nevanna");
-
-            // Defeat the Beast
-            Story.KillQuest(4810, "Gaiazor", "Gaiazor");
-        }
-
-        public void ExtraREP(bool Extra = true)
-        {
-            if (!Extra)
-                return;
-
-            if (Core.isCompletedBefore(4472))
-                return;
-
-            // Catering to Craftsmanship
-            if (Daily.CheckDailyv2(4471))
-            {
-                Core.EnsureAccept(4471);
-                Core.HuntMonster("Brightoak", "Bright Treeant", "Treeant Trunk", 5);
-                Core.KillMonster("Brightoak", "r8", "Spawn", "Wolfwood", "Wolfwood Fur", 7);
-                Core.EnsureComplete(4471);
-            }
-
-            // Some Disassembly Required   
-            if (Daily.CheckDailyv2(4472))
-            {
-                Core.EnsureAccept(4472);
-                Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);
-                Core.EnsureComplete(4472);
-            }
-        }
-
-        void NaturePotion(int quant)
-        {
-            if (Core.CheckInventory("Restoration of Nature Potion", quant))
-                return;
-
-            Core.AddDrop("Restoration of Nature Potion");
-
-            Core.Logger("Resetting so that `Nature potion` drops work ...properly?");
-            Core.Join("Whitemap");
-
-            while (!Bot.ShouldExit && !Core.CheckInventory("Restoration of Nature Potion", quant))
-            {
-                Core.EnsureAccept(4660);
-                Core.BuyItem("sandsea", 245, "Water of Life");
-                Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
-                Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
-                Core.EnsureComplete(4660);
-                Bot.Wait.ForPickup("Restoration of Nature Potion");
-            }
+            Core.EnsureAccept(4472);
+            Core.HuntMonster("Brightoak", "Brightpool Guardian", "Disciplined Guardian", 7);
+            Core.EnsureComplete(4472);
         }
     }
+
+    void NaturePotion(int quant)
+    {
+        if (Core.CheckInventory("Restoration of Nature Potion", quant))
+            return;
+
+        Core.AddDrop("Restoration of Nature Potion");
+
+        Core.Logger("Resetting so that `Nature potion` drops work ...properly?");
+        Core.Join("Whitemap");
+
+        while (!Bot.ShouldExit && !Core.CheckInventory("Restoration of Nature Potion", quant))
+        {
+            Core.EnsureAccept(4660);
+            Core.BuyItem("sandsea", 245, "Water of Life");
+            Core.KillMonster("brightoak", "r2", "Left", "Bright Treeant", "Bright Ore", 3);
+            Core.KillMonster("brightoak", "r2", "Left", "Wolfwood", "Herbal Remedy", 4);
+            Core.EnsureComplete(4660);
+            Bot.Wait.ForPickup("Restoration of Nature Potion");
+        }
+    }
+}
