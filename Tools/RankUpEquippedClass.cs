@@ -25,5 +25,15 @@ public class RankUpEquippedClass
         Core.SetOptions(false);
     }
 
-    public void DoRankUpEquippedClass() => Adv.RankUpClass(Bot.Player.CurrentClass.Name);
+    public void DoRankUpEquippedClass()
+    {
+        InventoryItem? currentClass = Bot.Player.CurrentClass;
+        if (currentClass == null)
+        {
+            Core.Logger("No class is currently equipped.");
+            return;
+        }
+
+        Adv.RankUpClass(currentClass.Name);
+    }
 }
