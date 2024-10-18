@@ -115,6 +115,7 @@ using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Skills;
 using Skua.Core.Options;
+using Skua.Core.Utils;
 
 public class UnlockForgeEnhancements
 {
@@ -793,31 +794,26 @@ public class UnlockForgeEnhancements
         Farm.GoodREP(10);
         Farm.BlacksmithingREP(9, Bot.Config!.Get<bool>("UseGold"), Bot.Config!.Get<bool>("UseGold"));
 
-        int SlimeSigil = 200;
+        int SlimeSigil = 150;
 
-        // Define items and their corresponding deduction values
+        // Deduct points based on items in inventory
         Dictionary<int, int> itemsToCheck = new()
         {
             { 39091, 100 },  // Ascended Paladin
-            // { 39093, 50 },   // Ascended Paladin Staff
             { 39094, 50 }    // Ascended Paladin Sword
         };
 
-        // Check each item in the dictionary and deduct points if not found
-        foreach (var item in itemsToCheck)
-        {
-            if (Core.CheckInventory(item.Key))
-            {
-                SlimeSigil -= item.Value;
-            }
-        }
+        // Deduct points for found items
+        itemsToCheck.ForEach(item => SlimeSigil -= Core.CheckInventory(item.Key) ? item.Value : 0);
 
         Core.EquipClass(ClassType.Farm);
         Bot.Quests.UpdateQuest(5807);
         Core.KillMonster("charredpath", "r5", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
-        Adv.BuyItem("therift", 1399, "Ascended Paladin", shopItemID: 5244);
-        // Adv.BuyItem("therift", 1399, "Ascended Paladin Staff", shopItemID: 5246);
-        Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", shopItemID: 5247);
+
+        // Purchase items
+        Adv.BuyItem("therift", 1399, "Ascended Paladin", 5244);
+        Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", 5247);
+
 
         Core.ChainComplete(8743);
         Core.Logger("Enhancement Unlocked: Absolution");
