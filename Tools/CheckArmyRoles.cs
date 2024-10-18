@@ -77,7 +77,7 @@ public class CheckArmyRoles
                         "(Eternal Dragon of War) " + importantItemCheckbox(2, "Dragon of Time") +
                         "(Diviner of War) " + importantItemCheckbox(3, "Arcana Invoker") +
                         "(Tempest of War) " + importantItemCheckbox(2, "Sovereign of Storms") +
-                        "(Martial Autist) " + importantItemCheckbox(3, "Martial Artist") +
+                        "(Autist Of War) " + importantItemCheckbox(3, "Martial Artist") +
 
                         $"Ｗｅａｐｏｎｓ\n" +
                         "(Prisoner of War) " + importantItemCheckbox(1, "Hollowborn Reaper's Scythe") +
