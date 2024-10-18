@@ -18,7 +18,7 @@ public class YandereStalker
     {
         new Option<bool>("Stay at player", "Stay at player", "stay at player, or goto default stop location", false),
         new Option<string>("Player Name", "Player Name", "Insert playername to find", ""),
-        new Option<string>("Map Name", "Map Name", "Insert playername to find", ""),
+        new Option<string>("Map Name", "Map Name", "Insert map name to find", ""),
         new Option<int>("Starting Room Number", "Starting Room Number", "RoomNumber to start at.", 0),
         new Option<int>("Ending Room Number", "Ending Room Number", "RoomNumber to end at.", 0),
         CoreBots.Instance.SkipOptions
