@@ -462,26 +462,26 @@ public class CoreNation
         {
             ItemBase? Reward = Core.EnsureLoad(870)?.Rewards.Find(x => x.Name == item);
             string rewardName = Reward?.Name ?? string.Empty;
-            Core.FarmingLogger(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default);
-            while (!Bot.ShouldExit && !Core.CheckInventory(rewardName, quant > 1 ? quant : Reward?.MaxStack ?? default))
+            Core.FarmingLogger(rewardName, quant > 1 ? quant : Reward.MaxStack);
+            while (!Bot.ShouldExit && !Core.CheckInventory(rewardName, quant > 1 ? quant : Reward.MaxStack))
             {
                 switch (rewardName)
                 {
                     case "Tainted Gem":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Tainted_Gem, quant > 1 ? quant : Reward?.MaxStack ?? default);
+                        ContractExchange(ContractExchangeRewards.Tainted_Gem, quant > 1 ? quant : Reward.MaxStack);
                         break;
                     case "Dark Crystal Shard":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Dark_Crystal_Shard, quant > 1 ? quant : Reward?.MaxStack ?? default);
+                        ContractExchange(ContractExchangeRewards.Dark_Crystal_Shard, quant > 1 ? quant : Reward.MaxStack);
                         break;
                     case "Gem of Nulgath":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Gem_of_Nulgath, quant > 1 ? quant : Reward?.MaxStack ?? default);
+                        ContractExchange(ContractExchangeRewards.Gem_of_Nulgath, quant > 1 ? quant : Reward.MaxStack);
                         break;
                     case "Blood Gem of the Archfiend":
                         Supplies("Diamond of Nulgath", 45);
-                        ContractExchange(ContractExchangeRewards.Blood_Gem_of_the_Archfiend, quant > 1 ? quant : Reward?.MaxStack ?? default);
+                        ContractExchange(ContractExchangeRewards.Blood_Gem_of_the_Archfiend, quant > 1 ? quant : Reward.MaxStack);
                         break;
                 }
             }
@@ -1674,7 +1674,7 @@ public class CoreNation
         // Check if Totem of Nulgath is already in inventory
         if (Core.CheckInventory("Totem of Nulgath", quant))
             return;
-
+        NewWorldsNewOpportunities("Totem of Nulgath", quant);
         VoucherItemTotemofNulgath(VoucherItemTotem.Totem_of_Nulgath, quant);
     }
 

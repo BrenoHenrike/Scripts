@@ -148,7 +148,11 @@ public class CoreVHL
             if (!Core.CheckInventory("Elders' Blood", 2))
             {
                 Core.Logger($"Not enough \"Elders' Blood\", please do the daily {2 - Bot.Inventory.GetQuantity("Elders' Blood")} more times (not today)");
-                FarmExtra();
+                Core.Logger("Gathering Materials for Void Crystal B");
+                Nation.FarmTotemofNulgath(15);
+                Nation.FarmDiamondofNulgath(200);
+                Nation.FarmBloodGem(30);
+                Core.Logger("Mats are all preped for Void Crystal B");
             }
             else
             {
