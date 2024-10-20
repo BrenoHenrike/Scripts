@@ -461,7 +461,13 @@ public class CoreNation
         if (item != null)
         {
             ItemBase? Reward = Core.EnsureLoad(870)?.Rewards.Find(x => x.Name == item);
-            string rewardName = Reward?.Name ?? string.Empty;
+            if (Reward == null)
+            {
+                Core.Logger($"Reward item \"{item}\" not found.");
+                return;
+            }
+
+            string rewardName = Reward.Name;
             Core.FarmingLogger(rewardName, quant > 1 ? quant : Reward.MaxStack);
             while (!Bot.ShouldExit && !Core.CheckInventory(rewardName, quant > 1 ? quant : Reward.MaxStack))
             {
