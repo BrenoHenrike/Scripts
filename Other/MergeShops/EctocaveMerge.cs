@@ -105,12 +105,8 @@ public class EctocaveMerge
                 case "Dragon Rogue Hood":
                 case "Dragon Rogue Twin Klinge Cape":
                     Core.FarmingLogger(req.Name, quant);
-                    Core.EquipClass(ClassType.Farm);
-                    while (!Bot.ShouldExit && !Core.CheckInventory(req.Name, quant))
-                    {
-                        Core.HuntMonster("ectocave", "Ektorax", req.Name, quant, req.Temp);
-                        Bot.Wait.ForPickup(req.Name);
-                    }
+                    Core.EquipClass(ClassType.Solo);
+                    Core.HuntMonster("ectocave", "Ektorax", req.Name, quant, req.Temp, false);
                     break;
 
                 case "Piece of Fabric":
