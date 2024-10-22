@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 267452,
+    "size": 267982,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -39,7 +39,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 131187,
+    "size": 132166,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -12653,7 +12653,7 @@
       "farm"
     ],
     "path": "Farm/REP/BlacksmithingREP.cs",
-    "size": 1338,
+    "size": 1335,
     "fileName": "BlacksmithingREP.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Farm/REP/BlacksmithingREP.cs"
   },
@@ -20097,7 +20097,7 @@
       "null"
     ],
     "path": "Nation/Various/TendurrrTheAssistantQuests.cs",
-    "size": 3431,
+    "size": 3430,
     "fileName": "TendurrrTheAssistantQuests.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/TendurrrTheAssistantQuests.cs"
   },
@@ -20430,7 +20430,7 @@
       "null"
     ],
     "path": "Nation/Various/JuggernautItems.cs",
-    "size": 4437,
+    "size": 4436,
     "fileName": "JuggernautItems.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Nation/Various/JuggernautItems.cs"
   },
