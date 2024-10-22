@@ -192,13 +192,12 @@ public class ArcanaInvokerResourceMerge
                 case "Crowned Skull of Na'al":
                     Core.FarmingLogger(req.Name, quant);
                     Core.DodgeClass();
-                    Core.Logger("Boss: [Na'al]");
+                    Core.Logger($"Doing story first: {!Core.isCompletedBefore(9373)}");
                     if (!Core.isCompletedBefore(9373))
-                        Core.Logger("[Doing story first]");
-                    Core.Logger("this may take an hr or 2... or u may first try\n" +
-                    "it so good luck(a kill has been gotten with vhl\n" +
-                    "so its confirmd able to be done...)");
-                    InfernalArena.DoStory();
+                    {
+                        Core.Logger("Boss: [Na'al]\n this may take an hr or 2... or u may first try it so good luck (a kill has been gotten with VHL) so its confirmd able to be done...)");
+                        InfernalArena.DoStory();
+                    }
                     Adv.BuyItem(Bot.Map.Name, 2336, req.Name, quant);
                     break;
 
