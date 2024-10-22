@@ -20,7 +20,7 @@ public class JuggernautItemsofNulgath
 
 
     public string OptionsStorage = "Reward Select";
-    public bool DontPreconfigure = false;
+    public bool DontPreconfigure = true;
     public List<IOption> Options = new()
     {
         CoreBots.Instance.SkipOptions,

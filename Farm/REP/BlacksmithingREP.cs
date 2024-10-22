@@ -16,10 +16,8 @@ public class BlacksmithingREP
     public CoreFarms Farm = new();
     public CoreAdvanced Adv => new();
 
-    public bool DontPreconfigure = false;
-
+    public bool DontPreconfigure = true;
     public string OptionsStorage = "BlackSmithRepGold";
-
     public List<IOption> Options = new()
     {
         new Option<bool>("UseGold", "Use Gold To Get Rep?", "Will Farm the Quest \"Intrepid Investing\" which costs 500k/ turnin, if you dont have the gold the bot will farm it.", false),
