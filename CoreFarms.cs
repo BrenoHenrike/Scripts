@@ -26,6 +26,19 @@ public class CoreFarms
     // [Can Change] Use boosts on Experience farming
     public bool doExpBoost { get; set; } = false;
 
+    // Thousand-level Constants
+    public const int OneK = 1000;        // 1k
+    public const int TenK = 10000;       // 10k
+    public const int OneHundredK = 100000; // 100k
+    public const int FiveHundredK = 500000; // 500k
+
+    // Million-level Constants
+    public const int OneMillion = 1000000;   // 1m
+    public const int FiveMillion = 5000000;  // 5m
+    public const int TenMillion = 10000000;  // 10m
+    public const int FiftyMillion = 50000000; // 50m
+    public const int OneHundredMillion = 100000000; // 100m
+
     private IScriptInterface Bot => IScriptInterface.Instance;
     private CoreBots Core => CoreBots.Instance;
 
@@ -1362,14 +1375,27 @@ public class CoreFarms
                 int remainingRepXP = RemainingFactionXp("Blacksmithing");
                 int itemsNeeded = (remainingRepXP + 999) / 1000; // Round up
                 int currentQuantity = Bot.Inventory.GetQuantity("Gold Voucher 500k");
+
                 Core.Logger($"Remaining Reputation XP: {remainingRepXP}");
-                Core.Logger($"Items to Buy in this Transaction: {Math.Min(200, Math.Max(0, Math.Min(itemsNeeded, 300 - currentQuantity)))}");
+                Core.Logger($"Current Gold Voucher Quantity: {currentQuantity}");
+                Core.Logger($"Items Needed: {itemsNeeded}");
 
                 if (remainingRepXP > 0)
                 {
-                    Gold(Math.Max(0, Math.Min(itemsNeeded, 300 - currentQuantity) * 500000));
-                    Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", Math.Min(200, Math.Max(0, Math.Min(itemsNeeded, 300 - currentQuantity))));
-                    Core.EnsureCompleteMulti(8737);
+                    // Cap items at 200 per transaction
+                    int itemsToBuy = Math.Min(200, Math.Max(0, Math.Min(itemsNeeded, 300 - currentQuantity)));
+                    Core.Logger($"Items to Buy in this Transaction: {itemsToBuy}");
+
+                    // Calculate exact gold needed for this transaction
+
+                    int goldNeeded = itemsToBuy * FiveHundredK;
+                    Core.Logger($"Gold Needed for {itemsToBuy} vouchers: {goldNeeded}");
+
+                    // Only farm as much gold as needed for this batch
+                    Gold(goldNeeded);
+
+                    Core.BuyItem("alchemyacademy", 2036, "Gold Voucher 500k", itemsToBuy);
+                    Core.EnsureCompleteMulti(8737, itemsNeeded);
                 }
                 else
                 {
@@ -1377,6 +1403,7 @@ public class CoreFarms
                     return;
                 }
             }
+
 
             ToggleBoost(BoostType.Reputation, false);
             Core.SavedState(false);
