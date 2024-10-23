@@ -85,17 +85,20 @@ public class CoreBots
     public int HeroAlignment { get; set; } = (int)Alignment.Evil;
 
     // Thousand-level Constants
-    public const int OneK = 1000;        // 1k
-    public const int TenK = 10000;       // 10k
-    public const int OneHundredK = 100000; // 100k
-    public const int FiveHundredK = 500000; // 500k
+    const int OneK = 1000;        // 1k
+    const int TenK = 10000;       // 10k
+    const int OneHundredK = 100000; // 100k
+    const int FiveHundredK = 500000; // 500k
 
     // Million-level Constants
-    public const int OneMillion = 1000000;   // 1m
-    public const int FiveMillion = 5000000;  // 5m
-    public const int TenMillion = 10000000;  // 10m
-    public const int FiftyMillion = 50000000; // 50m
-    public const int OneHundredMillion = 100000000; // 100m
+    const int OneMillion = 1000000;   // 1m
+    const int FiveMillion = 5000000;  // 5m
+    const int TenMillion = 10000000;  // 10m
+    const int FiftyMillion = 50000000; // 50m
+    const int OneHundredMillion = 100000000; // 100m
+
+    //Max integer
+    const int maxint = 2147483647;
 
     private static CoreBots? _instance;
     public static CoreBots Instance => _instance ??= new CoreBots();
