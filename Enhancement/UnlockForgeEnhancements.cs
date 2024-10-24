@@ -811,8 +811,8 @@ public class UnlockForgeEnhancements
         Core.KillMonster("charredpath", "r5", "Left", "Plague Spreader", "Slimed Sigil", SlimeSigil, isTemp: false);
 
         // Purchase items
-        Adv.BuyItem("therift", 1399, "Ascended Paladin", 5244);
-        Adv.BuyItem("therift", 1399, "Ascended Paladin Sword", 5247);
+        Adv.BuyItem("therift", 1399, "Ascended Paladin");
+        Adv.BuyItem("therift", 1399, "Ascended Paladin Sword");
 
 
         Core.ChainComplete(8743);
