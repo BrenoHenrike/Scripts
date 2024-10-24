@@ -149,12 +149,16 @@ public class CoreAdvanced
                     // Check if the required item is available in the shop and buy it if necessary
                     default:
                         // Find the required item from the shop
-                        ShopItem SubItem = Core.GetShopItems(map, shopID).FirstOrDefault(x => x.ID == req.ID);
+                        ShopItem? SubItem = Core.GetShopItems(map, shopID).FirstOrDefault(x => x.ID == req.ID);
 
                         if (SubItem != null)
                         {
                             GetItemReq(SubItem, req.Quantity * bundlesToBuy);
                             Core.BuyItem(map, shopID, req.Name, req.Quantity * bundlesToBuy, Log: Log);
+                        }
+                        else // I don't know if logging this is necessary, delete if not 
+                        {
+                            Core.Logger($"Required item {req.Name} with ID {req.ID} not found in the shop.");
                         }
                         break;
                 }
