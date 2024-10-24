@@ -112,39 +112,6 @@ public class CoreAdvanced
         _BuyItem(map, shopID, item, quant, Log);
     }
 
-    //if Adv.buy fucks up revert to this::
-    // private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, bool Log = true)
-    // {
-    //     int ShopQuant = item.Quantity;
-
-    //     if (item.Requirements != null)
-    //     {
-    //         foreach (ItemBase req in item.Requirements)
-    //         {
-    //             if (Core.CheckInventory(req.ID, req.Quantity * quant))
-    //                 continue;
-
-    //             // Core.Jump(Bot.Player.Cell, Bot.Player.Pad);
-
-    //             switch (req.ID)
-    //             {
-    //                 case 7132:
-    //                     Farm.DragonRunestone(req.Quantity * quant);
-    //                     // Farm.DragonRunestone(req.Quantity);
-    //                     break;
-
-    //                 default:
-    //                     if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
-    //                         BuyItem(map, shopID, req.ID, req.Quantity * quant, Log: Log);
-    //                     break;
-    //             }
-    //         }
-
-    //         GetItemReq(item, quant);
-    //         Core._BuyItem(map, shopID, item, quant, Log);
-    //     }
-    // }
-
 
     private void _BuyItem(string map, int shopID, ShopItem item, int quant = 1, bool Log = true)
     {
@@ -181,18 +148,23 @@ public class CoreAdvanced
 
                     // Check if the required item is available in the shop and buy it if necessary
                     default:
-                        if (Core.GetShopItems(map, shopID).Any(x => req.ID == x.ID))
+                        // Find the required item from the shop
+                        ShopItem SubItem = Core.GetShopItems(map, shopID).FirstOrDefault(x => x.ID == req.ID);
+
+                        if (SubItem != null)
+                        {
+                            GetItemReq(SubItem, req.Quantity * bundlesToBuy);
                             Core.BuyItem(map, shopID, req.Name, req.Quantity * bundlesToBuy, Log: Log);
+                        }
                         break;
                 }
             }
 
             // Attempt to purchase the main item after ensuring required items are available
             GetItemReq(item, quant);
-            Core._BuyItem(map, shopID, item, quant, Log);
+            Core.BuyItem(map, shopID, item.Name, quant, item.ShopItemID, Log: Log);
         }
     }
-
 
 
     /// <summary>
