@@ -1,0 +1,57 @@
+/*
+name: BladeMasterFarm
+description: Goes straight to the blademasters in dagepvp.
+tags: pvp, dage, blademaster, blade, scroll, sword scroll, fragment, SSF, SwordScroll, SwordScrollFragment, SwordScroll Fragment ,navigation
+*/
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
+
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
+
+public class BladeMasterFarm
+{
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreStory Story = new();
+
+    public void ScriptMain(IScriptInterface bot)
+    {
+        GrindDageScroll(250);
+    }
+
+    public void GrindDageScroll(int maxIterations = 250)
+    {
+        int currentIteration = 0;
+
+        while (currentIteration < maxIterations && !Bot.ShouldExit)
+        {
+            Core.Logger($"Starting iteration {currentIteration + 1}/{maxIterations}");
+
+            Core.EquipClass(ClassType.Farm);
+
+            Core.Join("dagepvp-999999", "Enter0", "Spawn");
+
+            Core.PvPMove(1, "r2", 475, 269);
+            Core.PvPMove(4, "r4", 963, 351);
+            Core.PvPMove(7, "r5", 843, 189);
+            Core.PvPMove(9, "r6", 937, 389);
+            Core.PvPMove(11, "r7", 513, 286);
+            Core.PvPMove(15, "r10", 832, 347);
+
+            Core.PVPKilling();
+            Core.PvPMove(20, "r11", 943, 391);
+            Core.PVPKilling();
+
+            Core.Join("battleon-999999");
+            Core.Sleep(1500);
+
+            currentIteration++;
+            Core.Logger($"Completed iteration {currentIteration}/{maxIterations}");
+        }
+
+        Core.Logger("GrindDageScroll loop completed.");
+    }
+}
