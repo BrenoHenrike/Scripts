@@ -1,0 +1,113 @@
+/*
+name: BludrutBrawlBossEfficient
+description: Combat Trophies Grind Efficiently
+tags: CombatTrophy, Trophies, Trophy, BludrutBrawl, bludrut, bludrutbrawl, efficient, pvp
+*/
+//cs_include Scripts/CoreBots.cs
+//cs_include Scripts/CoreFarms.cs
+//cs_include Scripts/CoreStory.cs
+
+using Skua.Core.Interfaces;
+using Skua.Core.Models.Monsters;
+
+public class BludrutBrawlBossEfficient
+{
+    private IScriptInterface Bot => IScriptInterface.Instance;
+    private CoreBots Core => CoreBots.Instance;
+    private CoreFarms Farm = new();
+    private CoreStory Story = new();
+
+    private const int maxIterations = 19; // Change to desired; I'll add updates based on quests later.
+    private const int nap = 1500;
+    private const string Cum = "Combat Trophy";
+
+    public void ScriptMain(IScriptInterface bot)
+    {
+        KillDabooss(maxIterations);
+    }
+
+    private void spawnpoint()
+    {
+        Core.Sleep(nap);
+        Core.Join("battleon-999999", "Enter", "Spawn");
+        Core.Sleep(nap);
+    }
+
+    private void KillDabooss(int maxIterations = maxIterations)
+{
+    int iterationsRN = 0;
+    int trophycheckfirst = Bot.Inventory.GetQuantity(Cum);
+    bool trophyincreasedq = false;
+    int checkdelay = 1000;
+    int maxwait = 15000;
+
+    while (iterationsRN < maxIterations && !Bot.ShouldExit)
+    {
+        Core.Logger($"Starting iteration {iterationsRN + 1}/{maxIterations}");
+
+        Core.EquipClass(ClassType.Solo);
+        Core.SavedState();
+
+        Core.Join("bludrutbrawl-999999", "Enter0", "Spawn");
+
+        Core.PvPMove(5, "Morale0C", 793, 285);
+        Core.PvPMove(4, "Morale0B", 802, 282);
+        Core.PvPMove(7, "Morale0A", 797, 281);
+        Core.PvPMove(9, "Crosslower", 802, 281);
+        Core.PvPMove(15, "Morale1A", 797, 280);
+        Core.PvPMove(23, "Morale1B", 802, 282);
+        Core.PvPMove(25, "Morale1C", 811, 283);
+        Core.PvPMove(28, "Captain1", 481, 263);
+
+        Core.PVPKilling();
+        Bot.Kill.Monster(16);
+
+        Core.Logger("Waiting for drop...");
+        int startTime = Environment.TickCount;
+        int currentTrophyCount = Bot.Inventory.GetQuantity(Cum);
+
+        while (Environment.TickCount - startTime < maxwait)
+        {
+            int trophychecks2 = Bot.Inventory.GetQuantity(Cum);
+            if (trophychecks2 > currentTrophyCount)
+            {
+                Core.Logger("Combat Trophies increased!");
+                trophyincreasedq = true;
+                spawnpoint();
+                trophycheckfirst = trophychecks2;
+                break;
+            }
+            Core.Sleep(checkdelay);
+        }
+
+        
+        if (!trophyincreasedq && Environment.TickCount - startTime >= maxwait)
+        {
+            Core.Logger("Combat Trophies did not increase within the expected time.");
+            Core.Sleep(nap);
+        }
+        else if (!trophyincreasedq)
+        {
+            Core.Logger("Continuing without a trophy increase in this attempt.");
+            Core.Sleep(nap);
+        }
+
+        Core.Logger("Waiting a bit before the next iteration");
+        spawnpoint();
+
+        iterationsRN++;
+        Core.Logger($"Completed iteration {iterationsRN}/{maxIterations}");
+    }
+
+    if (trophyincreasedq)
+    {
+        Core.Logger("Combat Trophies increased during the iterations.");
+    }
+    else
+    {
+        Core.Logger("Combat Trophies did not increase during the iterations.");
+    }
+
+    Core.Logger("Done, going again");
+}
+}
