@@ -180,6 +180,11 @@ public class Lich
         // Nictos Necronomicon
         if (!Core.CheckInventory("Nicto's Necronomicon"))
         {
+            if (!Core.IsMember)
+            {
+                Core.Logger("You need to be a member to buy Nicto's Necronomicon.");
+                return;
+            }
             ColossalWaresMerge.BuyAllMerge("Nicto's Necronomicon");
             Bot.Wait.ForPickup("Nicto's Necronomicon");
         }
