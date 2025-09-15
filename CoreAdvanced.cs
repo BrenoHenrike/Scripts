@@ -200,7 +200,7 @@ public class CoreAdvanced
             // Ensure required items are available before purchasing the main item
             GetItemReq(item, quant);
 
-            // Rejoin the map here incase getitemreq takes you elsewhere, to ensure that the shopitem is found (hopefully) 
+            // Rejoin the map here incase getitemreq takes you elsewhere, to ensure that the shopitem is found (hopefully)
             if (Bot.Map.Name != map)
                 Core.Join(map);
 
@@ -263,12 +263,12 @@ public class CoreAdvanced
     }
     /// <summary>
     /// Ensures that all necessary requirements (Experience, Reputation, Gold, and specific items)
-    /// are met in order to purchase an item. This includes verifying player level, farming or purchasing 
+    /// are met in order to purchase an item. This includes verifying player level, farming or purchasing
     /// required reputation, acquiring specific items such as Gold Vouchers and Dragon Runestones,
     /// and ensuring enough gold is available for the transaction.
     /// </summary>
     /// <param name="item">
-    /// The <see cref="ShopItem"/> object that contains all the details about the item, 
+    /// The <see cref="ShopItem"/> object that contains all the details about the item,
     /// including its requirements like reputation, level, gold cost, and additional items needed.
     /// </param>
     /// <param name="quant">
@@ -918,7 +918,7 @@ public class CoreAdvanced
                 Core.AddDrop(externalItem.ID);
                 Core.Logger($"{externalItem.Name} [{externalItem.ID}] is an external item (not from this shop), attempting to farm it from The ingredient list.");
 
-                // These are here inacse ae forgot to put vouchers in the original merge... like idiots (more of a fail safe) 
+                // These are here inacse ae forgot to put vouchers in the original merge... like idiots (more of a fail safe)
                 if (Req.Name.Contains("Dragon Runestone"))
                 {
                     Farm.DragonRunestone(ReqQuant);
@@ -1753,7 +1753,7 @@ public class CoreAdvanced
     //                     // Add the racial item standalone
     //                     bestGearData.Add(new(racialItem, racialBoost));
 
-    //                     // Add the racial items in combination with the 
+    //                     // Add the racial items in combination with the
     //                     bestGearData.AddRange(
     //                         damageAllItems
     //                             .Where(dmgTulpe => dmgTulpe.Item1.ItemGroup != racialItem.ItemGroup)
@@ -2786,9 +2786,20 @@ public class CoreAdvanced
         {
             switch (className)
             {
+                #region Ravenous
+                case "PlaceHodler":
+                    if (!uRavenous())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Forge;
+                    wSpecial = WeaponSpecial.Ravenous;
+                    break;
+                #endregion
+
                 #region Lucky Region
 
-                #region Lucky - Absolution|Penitence - Arcana's Concerto|Awe Blast - Forge|Examen
+                #region Lucky - Absolution - Arcana's Concerto|Awe Blast - Forge|Examen
                 case "lord of order":
                     if ((!uArcanasConcerto() && !uAwe()) || !uForgeHelm() || !uAbsolution())
                         goto default;
@@ -2799,17 +2810,6 @@ public class CoreAdvanced
                     hSpecial = HelmSpecial.Forge;
                     break;
                 #endregion
-
-                #region Ravenous
-                case "PlaceHodler":
-                    if (!uRavenous())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Forge;
-                    wSpecial = WeaponSpecial.Ravenous;
-                    break;
-                #endregion Ravenous
 
                 #region Lucky - Dauntless - Vim - Lament
                 case "great thief":
@@ -2897,8 +2897,20 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Vainglory - Valiance - Anima
+                #region Lucky - Vainglory - Lacerate|Dauntless - Anima
                 case "archfiend":
+                case "legendary archfiend":
+                    if ((!uLacerate() && !uDauntless()) || !uVainglory() || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uLacerate() ? WeaponSpecial.Lacerate : WeaponSpecial.Dauntless;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Valiance - Anima
                 case "eternal inversionist":
                 case "dragonlord":
                     if (!uVainglory() || !uValiance() || !uAnima())
@@ -2986,6 +2998,18 @@ public class CoreAdvanced
                     cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Valiance;
                     hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Valiance|Dauntless - Pneuma
+                case "dragon of time":
+                    if ((!uValiance() && !uDauntless()) || !uVainglory() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Dauntless;
+                    hSpecial = HelmSpecial.Pneuma;
                     break;
                 #endregion
 
@@ -3094,7 +3118,7 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Vainglory|Lament - Valiance|Awe Blast - Forge
+                #region Lucky - Lament|Vainglory - Valiance|Awe Blast - Forge
                 case "archpaladin":
                     if ((!uLament() && !uVainglory()) || (!uValiance() && !uAwe()) || !uForgeHelm())
                         goto default;
@@ -3106,35 +3130,179 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Fighter - Ravenous | Valiance - Anima - Absolution
-                case "stonecrusher":
-                case "infinity titan":
-                    if (!uValiance() || !uAnima() || !uAbsolution())
+                #region Lucky - Vainglory - Ravenous|Dauntless - Forge
+                case "arachnomancer":
+                    if ((!uRavenous() && !uDauntless()) || !uVainglory() || !uForgeHelm())
                         goto default;
 
-                    type = EnhancementType.Fighter;
-                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Anima;
-                    cSpecial = CapeSpecial.Absolution;
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Dauntless;
+                    hSpecial = HelmSpecial.Forge;
                     break;
                 #endregion
 
+                #region Lucky - Vainglory - Valiance|Dauntless - Pneuma
+                case "master of moglins":
+                case "dark master of moglins":
+                    if ((!uValiance() && !uDauntless()) || !uVainglory() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
                 #endregion
+
+                #region Lucky - Vainglory - Ravenous|Valiance - Forge
+                case "legendary hero":
+                case "dark legendary hero":
+                    if ((!uRavenous() && !uValiance()) || !uVainglory() || !uForgeHelm())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Forge;
+                    break;
+                #endregion
+
+                #region Lucky - Lament - Lacerate - Vim
+                case "leprechaun":
+                    if (!uLacerate() || !uVim() || !uLament())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Lacerate;
+                    hSpecial = HelmSpecial.Vim;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Smite - Forge
+                case "shadowscythe general":
+                    if (!uSmite() || !uForgeHelm() || !uVainglory())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Smite;
+                    hSpecial = HelmSpecial.Forge;
+                    break;
+                #endregion
+
+                #region Lucky - Lament - Valiance - Pneuma
+                case "scarlet sorceress":
+                    if (!uLament() || !uValiance() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Lament;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Elysium - Pneuma
+                case "shaman":
+                    if (!uVainglory() || !uElysium() || !uPneuma())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = WeaponSpecial.Elysium;
+                    hSpecial = HelmSpecial.Pneuma;
+                    break;
+                #endregion
+
+                #region Lucky - Vim - Lam - Rav
+                case "Chrono ShadowSlayer":
+                case "chrono shadowhunter":
+                    type = EnhancementType.Lucky;
+                    cSpecial = uLament() ? CapeSpecial.Lament : (uForgeCape() ? CapeSpecial.Forge : CurrentCapeSpecial());
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : (uArcanasConcerto() ? WeaponSpecial.Arcanas_Concerto : (uForgeWeapon() ? WeaponSpecial.Forge : WeaponSpecial.Awe_Blast));
+                    hSpecial = uVim() ? HelmSpecial.Vim : (uForgeHelm() ? HelmSpecial.Forge : CurrentHelmSpecial());
+                    break;
+                #endregion
+
+                #region Lucky - Vainglory - Valiance|Dauntless - Anima
+                case "glacial warlord":
+                case "glaceran warlord":
+                case "dark glaceran warlord":
+                case "savage glaceran warlord":
+                    if (!uVainglory() || (!uValiance() && !uDauntless()) || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #region Lucky - Valiance|Smite|Mana - Anima - Vainglory
+                case "dragonslayer general":
+                    type = EnhancementType.Lucky;
+
+                    cSpecial = uVainglory()
+                        ? CapeSpecial.Vainglory
+                        : uForgeCape()
+                            ? CapeSpecial.Forge
+                            : CurrentCapeSpecial();
+
+                    wSpecial = uValiance()
+                        ? WeaponSpecial.Valiance
+                        : uSmite()
+                            ? WeaponSpecial.Smite
+                            : WeaponSpecial.Mana_Vamp;
+
+                    hSpecial = uAnima()
+                        ? HelmSpecial.Anima
+                        : uForgeHelm()
+                            ? HelmSpecial.Forge
+                            : CurrentHelmSpecial();
+                    break;
+                #endregion
+
+                #region Lucky - Dauntless|Ravenous - Anima - Vainglory
+                case "chrono chaorruptor":
+                    if ((!uDauntless() && !uRavenous()) || !uAnima() || !uVainglory())
+                        goto default;
+
+                    type = EnhancementType.Lucky;
+                    cSpecial = CapeSpecial.Vainglory;
+                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Ravenous;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #endregion Lucky Region
 
                 #region Wizard Region
 
-                #region Wizard - Valiance|Praxis - Pneuna - Vainglory|Lament
+                #region Wizard - Valiance|Praxis - Pneuma - Vainglory|Lament
                 case "lightcaster":
-                    if (!uValiance() || !uPneuma() || !uVainglory())
-                    {
-                        if (!uLament() || !uPraxis())
-                            goto default;
-                    }
+                    if ((!uValiance() && !uPraxis()) || !uPneuma() || (!uVainglory() && !uLament()))
+                        goto default;
 
                     type = EnhancementType.Wizard;
-                    cSpecial = !uVainglory() ? CapeSpecial.Lament : CapeSpecial.Vainglory;
-                    wSpecial = !uValiance() ? WeaponSpecial.Praxis : WeaponSpecial.Valiance;
-                    hSpecial = !uPneuma() ? CurrentHelmSpecial() : HelmSpecial.Pneuma;
+                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Praxis;
+                    hSpecial = HelmSpecial.Pneuma;
+                    cSpecial = uVainglory() ? CapeSpecial.Vainglory : CapeSpecial.Lament;
+                    break;
+                #endregion
+
+                #region Wizard - Valiance|Praxis - Pneuma - Vainglory|Avarice
+                case "legion revenant":
+                case "legion revenant (ioda)":
+                    if ((!uValiance() && !uPraxis()) || !uPneuma() || (!uVainglory() && !uAvarice()))
+                        goto default;
+
+                    type = EnhancementType.Wizard;
+                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Praxis;
+                    hSpecial = HelmSpecial.Pneuma;
+                    cSpecial = uVainglory() ? CapeSpecial.Vainglory : CapeSpecial.Avarice;
                     break;
                 #endregion
 
@@ -3164,29 +3332,16 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Lucky - Vainglory - Valiance|Dauntless - Pneuma
-                case "master of moglins":
-                case "dark master of moglins":
-                    if ((!uValiance() && !uDauntless()) || !uVainglory() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Vainglory - Ravenous | Valiance - Pneuma | Wizard
-                case "legion revenant":
-                case "legion revenant (ioda)":
-                    if (!uVainglory() || !uValiance() || !uPneuma())
+                #region Wizard - Absolution - Arcana's Concerto|Awe Blast - Forge
+                case "stonecrusher":
+                case "infinity titan":
+                    if ((!uArcanasConcerto() && !uAwe()) || !uForgeHelm() || !uAbsolution())
                         goto default;
 
                     type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Pneuma;
+                    cSpecial = CapeSpecial.Absolution;
+                    wSpecial = uArcanasConcerto() ? WeaponSpecial.Arcanas_Concerto : WeaponSpecial.Awe_Blast;
+                    hSpecial = HelmSpecial.Forge;
                     break;
                 #endregion
 
@@ -3201,18 +3356,6 @@ public class CoreAdvanced
 
                     type = EnhancementType.Wizard;
                     cSpecial = CapeSpecial.Avarice;
-                    wSpecial = WeaponSpecial.Elysium;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region Wizard - Vainglory - Elysium - Pneuma
-                case "shaman":
-                    if (!uVainglory() || !uElysium() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Vainglory;
                     wSpecial = WeaponSpecial.Elysium;
                     hSpecial = HelmSpecial.Pneuma;
                     break;
@@ -3242,22 +3385,9 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Wizard - Lament - Valiance - Pneuma
-                case "scarlet sorceress":
-                    if (!uLament() || !uValiance() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Lament;
-                    wSpecial = WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-
-                #region Wizard - Vainglory / Forge - Daunt / Ravenous / Forge - Pneuma / Forge       
+                #region Wizard - Vainglory|Forge - Dauntless|Ravenous|Forge - Pneuma|Forge
                 case "sovereign of storms":
-                    if (!uVainglory() || !uDauntless() || !uRavenous() || !uPneuma())
+                    if ((!uVainglory() && !uForgeCape()) || (!uDauntless() && !uRavenous() && !uForgeWeapon()) || (!uPneuma() && !uForgeHelm()))
                         goto default;
 
                     type = EnhancementType.Wizard;
@@ -3279,129 +3409,6 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #endregion
-
-                #region Healer Region
-
-                #region Lucky - Vainglory - Valiance|Dauntless - Pneuma
-                case "dragon of time":
-                    if ((!uValiance() && !uDauntless()) || !uVainglory() || !uPneuma())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Dauntless;
-                    hSpecial = HelmSpecial.Pneuma;
-                    break;
-                #endregion
-
-                #region  Healer - None - Valiance - Nine
-                case "obsidian paladin chronomancer":
-                case "paladin chronomancer":
-                    if (!uValiance())
-                        goto default;
-
-                    type = EnhancementType.Healer;
-                    cSpecial = CapeSpecial.None;
-                    wSpecial = WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.None;
-                    break;
-                #endregion
-
-                #region Fighter - Ravenous | Valiance - Anima - Absolution
-                case "frostval barbarian":
-                    if (!uAbsolution() || !uValiance() || !uAnima())
-                        goto default;
-                    type = EnhancementType.Fighter;
-                    cSpecial = CapeSpecial.Absolution;
-                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Anima;
-                    break;
-                #endregion
-
-                #region Lucky - Penitence | Absolution - Elysium | Valiance - Vim
-                case "arachnomancer":
-                    if (!uAbsolution() || !uAbsolution() || !uVim())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = uPenitence() ? CapeSpecial.Penitence : CapeSpecial.Absolution;
-                    wSpecial = uElysium() ? WeaponSpecial.Elysium : WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Vim;
-                    break;
-                #endregion
-
-                #region Healer - Current - Valiance/Awe - Current
-                case "healer":
-                case "healer (rare)":
-                    type = EnhancementType.Healer;
-                    cSpecial = CurrentCapeSpecial();
-                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Awe_Blast;
-                    hSpecial = CurrentHelmSpecial();
-                    break;
-                #endregion
-
-                #region Luck - Vim - Lam - Rav
-                case "Chrono ShadowSlayer":
-                case "chrono shadowhunter":
-                    type = EnhancementType.Lucky;
-                    cSpecial = uLament() ? CapeSpecial.Lament : (uForgeCape() ? CapeSpecial.Forge : CurrentCapeSpecial());
-                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : (uArcanasConcerto() ? WeaponSpecial.Arcanas_Concerto : (uForgeWeapon() ? WeaponSpecial.Forge : WeaponSpecial.Awe_Blast));
-                    hSpecial = uVim() ? HelmSpecial.Vim : (uForgeHelm() ? HelmSpecial.Forge : CurrentHelmSpecial());
-                    break;
-                #endregion
-
-                #region Lucky - Vainglory - Valiance / Dauntless - Anima
-                case "glacial warlord":
-                case "glaceran warlord":
-                case "dark glaceran warlord":
-                case "savage glaceran warlord":
-                    if (!uVainglory() || !uValiance() || !uAnima())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Anima;
-                    break;
-                #endregion
-
-                #region Luck - Val/Smite/Mana - Anima - Vg
-                case "dragonslayer general":
-                    type = EnhancementType.Lucky;
-
-                    cSpecial = uVainglory()
-                        ? CapeSpecial.Vainglory
-                        : uForgeCape()
-                            ? CapeSpecial.Forge
-                            : CurrentCapeSpecial();
-
-                    wSpecial = uValiance()
-                        ? WeaponSpecial.Valiance
-                        : uSmite()
-                            ? WeaponSpecial.Smite
-                            : WeaponSpecial.Mana_Vamp;
-
-                    hSpecial = uAnima()
-                        ? HelmSpecial.Anima
-                        : uForgeHelm()
-                            ? HelmSpecial.Forge
-                            : CurrentHelmSpecial();
-                    break;
-                #endregion
-
-                #region Luck - Dauntless | Ravenous - Anima - Vainglory
-                case "chrono chaorruptor":
-                    if (!uRavenous() || !uAnima() || !uVainglory())
-                        goto default;
-
-                    type = EnhancementType.Lucky;
-                    cSpecial = CapeSpecial.Vainglory;
-                    wSpecial = uDauntless() ? WeaponSpecial.Dauntless : WeaponSpecial.Ravenous;
-                    hSpecial = HelmSpecial.Anima;
-                    break;
-                #endregion
-
                 #region Wizard - Ravenous - Pneuma - Vainglory
                 case "chrono dataknight":
                 case "chrono dragonknight":
@@ -3415,19 +3422,50 @@ public class CoreAdvanced
                     break;
                 #endregion
 
-                #region Luck - Ravenous | Valiance - ForgeHelm | Luck - Absolution
-                case "legendary hero":
-                    if (!uValiance() || !uForgeHelm() || !uAbsolution())
+                #endregion Wizard Region
+
+                #region Healer Region
+
+                #region Healer - None - Valiance - None
+                case "obsidian paladin chronomancer":
+                case "paladin chronomancer":
+                    if (!uValiance())
                         goto default;
 
-                    type = EnhancementType.Wizard;
-                    cSpecial = CapeSpecial.Absolution;
-                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
-                    hSpecial = HelmSpecial.Forge;
+                    type = EnhancementType.Healer;
+                    cSpecial = CapeSpecial.None;
+                    wSpecial = WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.None;
                     break;
                 #endregion
 
+                #region Healer - Current - Valiance/Awe - Current
+                case "healer":
+                case "healer (rare)":
+                    type = EnhancementType.Healer;
+                    cSpecial = CurrentCapeSpecial();
+                    wSpecial = uValiance() ? WeaponSpecial.Valiance : WeaponSpecial.Awe_Blast;
+                    hSpecial = CurrentHelmSpecial();
+                    break;
                 #endregion
+
+                #endregion Healer Region
+
+                #region Fighter Region
+
+                #region Fighter - Ravenous|Valiance - Anima - Absolution
+                case "frostval barbarian":
+                    if (!uAbsolution() || !uValiance() || !uAnima())
+                        goto default;
+
+                    type = EnhancementType.Fighter;
+                    cSpecial = CapeSpecial.Absolution;
+                    wSpecial = uRavenous() ? WeaponSpecial.Ravenous : WeaponSpecial.Valiance;
+                    hSpecial = HelmSpecial.Anima;
+                    break;
+                #endregion
+
+                #endregion Fighter Region
 
                 #region Unassigned Region
 
@@ -3481,7 +3519,6 @@ public class CoreAdvanced
                 case "dark chaos berserker":
                 case "dark cryomancer":
                 case "dark harbinger":
-                case "dark legendary hero":
                 case "darkblood stormking":
                 case "deathknight lord":
                 case "deathknight":
@@ -3519,7 +3556,6 @@ public class CoreAdvanced
                 case "imperial chunin":
                 case "infinite dark caster":
                 case "infinite legion dark caster":
-                case "infinity titan":
                 case "legendary naval commander":
                 case "legion blademaster assassin":
                 case "legion doomknight tester":
@@ -3527,7 +3563,6 @@ public class CoreAdvanced
                 case "legion paladin":
                 case "legion revenant member test":
                 case "legion swordmaster assassin":
-                case "leprechaun":
                 case "lightcaster test":
                 case "lightmage":
                 case "love caster":
@@ -3566,7 +3601,6 @@ public class CoreAdvanced
                 case "shadow ripper":
                 case "shadow rocker":
                 case "shadowflame dragonlord":
-                case "shadowscythe general":
                 case "silver paladin":
                 case "skycharged grenadier":
                 case "skyguard grenadier":
@@ -3604,7 +3638,7 @@ public class CoreAdvanced
             return true;
 
             // // Always place this check as the last one in a 'if' + '||' stack.
-            // // See EXAMPLE_CLASS as an example. 
+            // // See EXAMPLE_CLASS as an example.
             // bool uDauntlessExtra()
             // {
             //     // Check if Dauntless is unlocked, and set it as wSpecial if true.
@@ -3619,7 +3653,7 @@ public class CoreAdvanced
             // }
 
             // // Always place this check as the last one in a 'if' + '||' stack.
-            // // See ArchPaladin as an example. 
+            // // See ArchPaladin as an example.
             // bool uValianceExtra()
             // {
             //     // Check if Valiance is unlocked, and set it as wSpecial if true.
@@ -3698,11 +3732,9 @@ public class CoreAdvanced
                 case "imperial chunin":
                 case "infinite dark caster":
                 case "infinite legion dark caster":
-                case "infinity titan":
                 case "legion blademaster assassin":
                 case "legion evolved dark caster":
                 case "legion swordmaster assassin":
-                case "leprechaun":
                 case "lycan":
                 case "master ranger":
                 case "mechajouster":
@@ -3719,7 +3751,6 @@ public class CoreAdvanced
                 case "classic rogue":
                 case "rogue (rare)":
                 case "scarlet sorceress":
-                case "shadowscythe general":
                 case "skycharged grenadier":
                 case "skyguard grenadier":
                 case "sovereign of storms":
@@ -3753,7 +3784,6 @@ public class CoreAdvanced
                 case "classic defender":
                 case "clawsuit":
                 case "cryomancer mini pet coming soon":
-                case "dark legendary hero":
                 case "dragonsoul shinobi":
                 case "ultra omniknight":
                 case "dark ultra omninight":
@@ -3881,7 +3911,6 @@ public class CoreAdvanced
                 case "battlemage":
                 case "battlemage of love":
                 case "blaze binder":
-                case "blood sorceress":
                 case "dark battlemage":
                 case "dragon knight":
                 case "firelord summoner":
@@ -3897,7 +3926,6 @@ public class CoreAdvanced
                 case "royal battlemage":
                 case "timeless dark caster":
                 case "witch":
-                case "stonecrusher":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
