@@ -3732,6 +3732,7 @@ public class CoreAdvanced
                 case "ranger":
                 case "renegade":
                 case "rogue":
+                case "rogue (rare)":
                 case "scarlet sorceress":
                 case "shadowscythe general":
                 case "skycharged grenadier":
@@ -3744,26 +3745,7 @@ public class CoreAdvanced
                 case "undead goat":
                 case "undeadslayer":
                 case "underworld chronomancer":
-                case "ninja":
                 case "ninja warrior":
-                case "chrono dataknight":
-                case "chrono dragonknight":
-                case "cryomancer":
-                case "dark caster":
-                case "dark cryomancer":
-                case "dark lord":
-                case "darkblood stormking":
-                case "defender":
-                case "frost spiritreaver":
-                case "immortal dark caster":
-                case "legion paladin":
-                case "legion revenant":
-                case "lightcaster":
-                case "northlands monk":
-                case "psionic mindbreaker":
-                case "pyromancer":
-                case "sakura cryomancer":
-                case "troll spellsmith":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Spiral_Carve;
                     break;
@@ -3807,7 +3789,6 @@ public class CoreAdvanced
                 case "evolved shaman":
                 case "lightmage":
                 case "mindbreaker":
-                case "shaman":
                 case "the collector":
                 case "vindicator of they":
                     type = EnhancementType.Lucky;
@@ -3816,11 +3797,9 @@ public class CoreAdvanced
                 #endregion
 
                 #region Lucky - Awe Blast
-                case "arachnomancer":
                 case "bard":
                 case "chaos avenger":
                 case "chrono assassin":
-                case "chronomancer":
                 case "deathknight lord":
                 case "dragon shinobi":
                 case "dragonlord":
@@ -3831,13 +3810,11 @@ public class CoreAdvanced
                 case "guardian":
                 case "heavy metal necro":
                 case "heavy metal rockstar":
-                case "leprechaun":
                 case "lord of order":
                 case "dark metal necro":
                 case "fighter deathknight":
                 case "frostval barbarian":
                 case "nu metal necro":
-                case "oracle":
                 case "shadow dragon shinobi":
                 case "shadow ripper":
                 case "shadow rocker":
@@ -3848,7 +3825,6 @@ public class CoreAdvanced
                 case "troubador of love":
                 case "unchained rocker":
                 case "unchained rockstar":
-                case "necrotic chronomancer":
                 case "yami no ronin":
                 case "arcane dark caster":
                 case "battlemage":
@@ -3901,11 +3877,6 @@ public class CoreAdvanced
                 case "not a mod":
                 case "warriorscythe general":
                 case "dragon of time":
-                case "elemental dracomancer":
-                case "lightcaster test":
-                case "love caster":
-                case "mage":
-                case "sorcerer":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Health_Vamp;
                     break;
@@ -3931,7 +3902,6 @@ public class CoreAdvanced
                 #region Wizard - Awe Blast
                 case "acolyte":
                 case "arcane dark caster":
-                case "battlemage":
                 case "battlemage of love":
                 case "blaze binder":
                 case "dark battlemage":
@@ -3966,9 +3936,6 @@ public class CoreAdvanced
                 case "frost spiritreaver":
                 case "immortal dark caster":
                 case "legion paladin":
-                case "legion revenant":
-                case "legion revenant (ioda)":
-                case "lightcaster":
                 case "pink romancer":
                 case "psionic mindbreaker":
                 case "pyromancer":
