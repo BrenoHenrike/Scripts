@@ -3709,10 +3709,10 @@ public class CoreAdvanced
                 case "classic barber":
                 case "classic doomknight":
                 case "classic exalted soul cleaver":
-                case "classic guardian":
                 case "classic paladin":
                 case "classic pirate":
                 case "classic soul cleaver":
+                case "classic legion doomknight":
                 case "continuum chronomancer":
                 case "corrupted chronomancer":
                 case "legion blademaster assassin":
@@ -3785,12 +3785,6 @@ public class CoreAdvanced
                 case "thief of hours":
                 case "ultra elemental warrior":
                 case "ultra omninight":
-                case "daimon":
-                case "evolved shaman":
-                case "lightmage":
-                case "mindbreaker":
-                case "the collector":
-                case "vindicator of they":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Mana_Vamp;
                     break;
@@ -3813,37 +3807,19 @@ public class CoreAdvanced
                 case "lord of order":
                 case "dark metal necro":
                 case "fighter deathknight":
-                case "frostval barbarian":
                 case "nu metal necro":
                 case "shadow dragon shinobi":
                 case "shadow ripper":
                 case "shadow rocker":
-                case "shadowstalker of time":
-                case "shadowwalker of time":
-                case "shadowweaver of time":
                 case "star captain":
                 case "troubador of love":
                 case "unchained rocker":
                 case "unchained rockstar":
                 case "yami no ronin":
-                case "arcane dark caster":
                 case "battlemage":
                 case "battlemage of love":
-                case "blaze binder":
                 case "blood sorceress":
-                case "dark battlemage":
-                case "dark master of moglins":
-                case "dragon knight":
-                case "firelord summoner":
                 case "grim necromancer":
-                case "healer":
-                case "highseas commander":
-                case "infinity knight":
-                case "interstellar knight":
-                case "master of moglins":
-                case "mystical dark caster":
-                case "timeless dark caster":
-                case "witch":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
@@ -3876,7 +3852,6 @@ public class CoreAdvanced
                 case "warlord":
                 case "not a mod":
                 case "warriorscythe general":
-                case "dragon of time":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Health_Vamp;
                     break;
@@ -3902,7 +3877,6 @@ public class CoreAdvanced
                 #region Wizard - Awe Blast
                 case "acolyte":
                 case "arcane dark caster":
-                case "battlemage of love":
                 case "blaze binder":
                 case "dark battlemage":
                 case "dragon knight":
@@ -3941,8 +3915,6 @@ public class CoreAdvanced
                 case "pyromancer":
                 case "sakura cryomancer":
                 case "troll spellsmith":
-                case "classic legion doomknight":
-                case "legion doomknight":
                 case "legion doomknight tester":
                 case "arcana invoker":
                     type = EnhancementType.Wizard;
