@@ -3819,7 +3819,6 @@ public class CoreAdvanced
                 case "battlemage":
                 case "battlemage of love":
                 case "blood sorceress":
-                case "grim necromancer":
                     type = EnhancementType.Lucky;
                     wSpecial = WeaponSpecial.Awe_Blast;
                     break;
@@ -3915,7 +3914,6 @@ public class CoreAdvanced
                 case "pyromancer":
                 case "sakura cryomancer":
                 case "troll spellsmith":
-                case "legion doomknight tester":
                 case "arcana invoker":
                     type = EnhancementType.Wizard;
                     wSpecial = WeaponSpecial.Spiral_Carve;
