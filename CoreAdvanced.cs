@@ -3687,7 +3687,6 @@ public class CoreAdvanced
                 case "berserker":
                 case "beta berserker":
                 case "blademaster":
-                case "blood titan":
                 case "cardclasher":
                 case "chaos champion prime":
                 case "chaos slayer":
@@ -3695,7 +3694,6 @@ public class CoreAdvanced
                 case "chronocommander":
                 case "doomknight":
                 case "empyrean chronomancer":
-                case "eternal inversionist":
                 case "evolved dark caster":
                 case "evolved leprechaun":
                 case "exalted harbinger":
@@ -3776,7 +3774,6 @@ public class CoreAdvanced
                 case "alpha omega":
                 case "alpha pirate":
                 case "arachnomancer":
-                case "beast warrior":
                 case "blood ancient":
                 case "chaos shaper":
                 case "chronomancer":
@@ -3785,7 +3782,6 @@ public class CoreAdvanced
                 case "drakel warlord":
                 case "heroic naval commander":
                 case "horc evader":
-                case "chronomancer prime":
                 case "classic defender":
                 case "clawsuit":
                 case "legendary elemental warrior":
@@ -3807,21 +3803,10 @@ public class CoreAdvanced
                 case "thief of hours":
                 case "ultra elemental warrior":
                 case "ultra omninight":
-                case "void highlord tester":
-                case "warlord":
-                case "not a mod":
-                case "warriorscythe general":
-                case "battlemage":
-                case "battlemage of love":
-                case "cryomancer":
                 case "daimon":
-                case "dark battlemage":
-                case "dark cryomancer":
                 case "evolved shaman":
                 case "lightmage":
                 case "mindbreaker":
-                case "royal battlemage":
-                case "sakura cryomancer":
                 case "shaman":
                 case "the collector":
                 case "vindicator of they":
@@ -3846,10 +3831,8 @@ public class CoreAdvanced
                 case "guardian":
                 case "heavy metal necro":
                 case "heavy metal rockstar":
-                case "chronomancer prime":
                 case "leprechaun":
                 case "lord of order":
-                case "nechronomancer":
                 case "dark metal necro":
                 case "fighter deathknight":
                 case "frostval barbarian":
@@ -3881,12 +3864,8 @@ public class CoreAdvanced
                 case "highseas commander":
                 case "infinity knight":
                 case "interstellar knight":
-                case "legion revenant":
-                case "lightcaster":
                 case "master of moglins":
                 case "mystical dark caster":
-                case "northlands monk":
-                case "royal battlemage":
                 case "timeless dark caster":
                 case "witch":
                     type = EnhancementType.Lucky;
