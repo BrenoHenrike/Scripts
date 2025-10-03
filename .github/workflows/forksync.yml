@@ -1,0 +1,29 @@
+name: Sync Fork
+
+on:
+  schedule:
+    # Run every 10 minutes
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync fork with upstream
+        uses: tgymnich/fork-sync@v2.0
+        with:
+          # Upstream repo owner (not your fork)
+          owner: BrenoHenrike
+          # Upstream repo name
+          repo: Scripts
+          # Branch in upstream to sync FROM
+          base: Skua
+          # Branch in your fork to sync TO
+          head: Skua
+          # Merge method: merge | rebase | squash
+          merge_method: merge
+          # (optional) Auto approve if you provide a PAT secret
+          auto_approve: 'false'
+          # Token: use PAT for auto approve/merge, GITHUB_TOKEN works for plain sync
+          token: ${{ secrets.GITHUB_TOKEN }}

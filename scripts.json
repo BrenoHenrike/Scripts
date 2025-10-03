@@ -6,7 +6,7 @@
       "null"
     ],
     "path": "CoreDailies.cs",
-    "size": 54789,
+    "size": 54102,
     "fileName": "CoreDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreDailies.cs"
   },
@@ -17,7 +17,7 @@
       "null"
     ],
     "path": "CoreAdvanced.cs",
-    "size": 171908,
+    "size": 172088,
     "fileName": "CoreAdvanced.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreAdvanced.cs"
   },
@@ -28,7 +28,7 @@
       "null"
     ],
     "path": "CoreFarms.cs",
-    "size": 141505,
+    "size": 141616,
     "fileName": "CoreFarms.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreFarms.cs"
   },
@@ -50,7 +50,7 @@
       "null"
     ],
     "path": "CoreBots.cs",
-    "size": 403446,
+    "size": 401408,
     "fileName": "CoreBots.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/CoreBots.cs"
   },
@@ -283,7 +283,7 @@
       "all"
     ],
     "path": "Dailies/0AllDailies.cs",
-    "size": 5149,
+    "size": 5073,
     "fileName": "0AllDailies.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/0AllDailies.cs"
   },
@@ -564,20 +564,6 @@
     "size": 619,
     "fileName": "PowerGem.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/PowerGem.cs"
-  },
-  {
-    "name": "Death Knight Lord Daily",
-    "description": "Death Knight Lord",
-    "tags": [
-      "daily",
-      "death knight lord",
-      "member",
-      "class"
-    ],
-    "path": "Dailies/DeathKnightLord[Mem].cs",
-    "size": 648,
-    "fileName": "DeathKnightLord[Mem].cs",
-    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Dailies/DeathKnightLord[Mem].cs"
   },
   {
     "name": "Cyseros Super Hammer Daily",
@@ -9818,7 +9804,7 @@
       "null"
     ],
     "path": "Story/AgeOfRuin/CoreAOR.cs",
-    "size": 44911,
+    "size": 44953,
     "fileName": "CoreAOR.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Story/AgeOfRuin/CoreAOR.cs"
   },
@@ -12460,7 +12446,7 @@
       "legend"
     ],
     "path": "Other/FarmJoeKits/1MemberFarmsKit.cs",
-    "size": 30370,
+    "size": 30549,
     "fileName": "1MemberFarmsKit.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/FarmJoeKits/1MemberFarmsKit.cs"
   },
@@ -12527,7 +12513,7 @@
       "all"
     ],
     "path": "Other/Classes/0AllClasses.cs",
-    "size": 40936,
+    "size": 41196,
     "fileName": "0AllClasses.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/0AllClasses.cs"
   },
@@ -12828,6 +12814,19 @@
     "size": 1279,
     "fileName": "BloodSorceress.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/BloodSorceress.cs"
+  },
+  {
+    "name": "Death Knight Lord Post-update farming script",
+    "description": "Death Knight Lord, post-update farming script, deathknight lord, golden deathknight lord, silver deathknight lord, dkl, member, class",
+    "tags": [
+      "death knight lord",
+      "member",
+      "class"
+    ],
+    "path": "Other/Classes/DeathKnightLord[mem].cs",
+    "size": 2169,
+    "fileName": "DeathKnightLord[mem].cs",
+    "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/Classes/DeathKnightLord[mem].cs"
   },
   {
     "name": "ScarletSorceress",
@@ -13646,7 +13645,7 @@
       "reavers"
     ],
     "path": "Other/MergeShops/NovaShrineGiftsMerge.cs",
-    "size": 12092,
+    "size": 12112,
     "fileName": "NovaShrineGiftsMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/NovaShrineGiftsMerge.cs"
   },
@@ -16506,13 +16505,37 @@
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/OrbHuntMerge.cs"
   },
   {
-    "name": "BonecastleMerge",
-    "description": "null",
+    "name": "Bonecastle Merge",
+    "description": "This bot will farm the items belonging to the selected mode for the Bonecastle Merge [1242] in /bonecastle",
     "tags": [
-      "null"
+      "bonecastle",
+      "merge",
+      "bonecastle",
+      "piercer",
+      "plate",
+      "face",
+      "accoutrements",
+      "tomb",
+      "tombstone",
+      "vadens",
+      "enchanted",
+      "deathknight",
+      "deathknights",
+      "royal",
+      "deathbringer",
+      "cloak",
+      "sabre",
+      "pile",
+      "bone",
+      "skulls",
+      "silver",
+      "golden",
+      "castle",
+      "house",
+      "lord"
     ],
     "path": "Other/MergeShops/BonecastleMerge.cs",
-    "size": 6760,
+    "size": 10097,
     "fileName": "BonecastleMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BonecastleMerge.cs"
   },
@@ -17367,7 +17390,7 @@
       "golden"
     ],
     "path": "Other/MergeShops/BonecastleTowerMerge.cs",
-    "size": 9116,
+    "size": 9748,
     "fileName": "BonecastleTowerMerge.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Other/MergeShops/BonecastleTowerMerge.cs"
   },
@@ -20148,7 +20171,7 @@
       "null"
     ],
     "path": "Seasonal/Mogloween/CoreMogloween.cs",
-    "size": 23492,
+    "size": 23701,
     "fileName": "CoreMogloween.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Seasonal/Mogloween/CoreMogloween.cs"
   },
@@ -23027,7 +23050,7 @@
       "developer"
     ],
     "path": "Tools/ForDevelopers/CaseStorage.cs",
-    "size": 946781,
+    "size": 959039,
     "fileName": "CaseStorage.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Tools/ForDevelopers/CaseStorage.cs"
   },
@@ -24954,7 +24977,7 @@
       "good"
     ],
     "path": "Good/BLoD/1SanctifiedLightofDestiny.cs",
-    "size": 1651,
+    "size": 1784,
     "fileName": "1SanctifiedLightofDestiny.cs",
     "downloadUrl": "https://raw.githubusercontent.com/BrenoHenrike/Scripts/Skua/Good/BLoD/1SanctifiedLightofDestiny.cs"
   },

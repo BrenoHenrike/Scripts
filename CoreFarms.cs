@@ -764,8 +764,8 @@ public class CoreFarms
             }
             if (Bot.Player.Cell != "r11")
             {
-                Core.Jump("r14", "Left");
-                Bot.Wait.ForCellChange("r14");
+                Core.Jump("r11", "Left");
+                Bot.Wait.ForCellChange("r11");
             }
 
             Core.CanWeAggro();

@@ -70,7 +70,7 @@ public class CoreBots
     public bool AntiLag { get; set; } = true;
     // [Can Change] Name of your soloing class
     public string SoloClass { get; set; } = "Generic";
-    // [Can Change] Mode of soloing class, if it has multiple. 
+    // [Can Change] Mode of soloing class, if it has multiple.
     public ClassUseMode SoloUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Whether you wish to equip solo equipment
     public bool SoloGearOn { get; set; } = true;
@@ -78,7 +78,7 @@ public class CoreBots
     public string[] SoloGear { get; set; } = Array.Empty<string>();
     // [Can Change] Name of your farming class
     public string FarmClass { get; set; } = "Generic";
-    // [Can Change] Mode of farming class, if it has multiple. 
+    // [Can Change] Mode of farming class, if it has multiple.
     public ClassUseMode FarmUseMode { get; set; } = ClassUseMode.Base;
     // [Can Change] Whether you wish to equip farm equipment
     public bool FarmGearOn { get; set; } = true;
@@ -240,7 +240,7 @@ public class CoreBots
         #region Required things that must be done before starting the Script
         if (changeTo)
         {
-            //Start scripts Safely by starting them in the house ( or whitemap if house desnt exist) if the start map is battleon 
+            //Start scripts Safely by starting them in the house ( or whitemap if house desnt exist) if the start map is battleon
             if (new[] { "battleon", "oaklore", "bludrutbrawl" }.Any(m => Bot.Map.Name.Equals(m, StringComparison.OrdinalIgnoreCase)))
             {
                 if (Bot.House.Items.Any(h => h.Equipped))
@@ -313,7 +313,7 @@ public class CoreBots
             Bot.Drops.Start();
             Logger("Bot Configured");
 
-            // Bunch of things that are done in the background and you dont need the bot to wait for 
+            // Bunch of things that are done in the background and you dont need the bot to wait for
             void SetOptionsAsync()
             {
                 #region Handlers
@@ -788,7 +788,7 @@ public class CoreBots
     /// The delay in milliseconds between retry attempts. The default value is 1000 milliseconds (1 second).
     /// </param>
     /// <returns>
-    /// Returns the initialized object of type <typeparamref name="T"/> if the initialization succeeds within the specified retries, 
+    /// Returns the initialized object of type <typeparamref name="T"/> if the initialization succeeds within the specified retries,
     /// otherwise returns null after exhausting all retry attempts.
     /// </returns>
     /// <remarks>
@@ -2910,7 +2910,7 @@ public class CoreBots
         if (toReturn != null && toReturn.Any() && questIDs.All(q => toReturn.Any(x => x.ID == q)))
             return toReturn;
 
-        // If Github failed, manually update the quest file 
+        // If Github failed, manually update the quest file
         await UpdateQuestFile();
         if (LoadLocal())
             return toReturn!;
@@ -4397,7 +4397,7 @@ public class CoreBots
     //Choose Variants - String
 
     /// <summary>
-    /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names. 
+    /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names.
     /// Always chooses a reward upon quest completion.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
@@ -4492,7 +4492,7 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Hunts monsters based on the requirements of a specified quest with optional map, monster names, and class types. 
+    /// Hunts monsters based on the requirements of a specified quest with optional map, monster names, and class types.
     /// Always chooses a reward upon quest completion.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
@@ -4587,7 +4587,7 @@ public class CoreBots
     //Choose Variants - Int
 
     /// <summary>
-    /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names. 
+    /// Hunts monsters based on the requirements of a specified quest and an optional array of map and monster names.
     /// Always chooses a reward by its ID upon quest completion.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
@@ -4683,7 +4683,7 @@ public class CoreBots
     }
 
     /// <summary>
-    /// Hunts monsters based on the requirements of a specified quest with optional map, monster names, and class types. 
+    /// Hunts monsters based on the requirements of a specified quest with optional map, monster names, and class types.
     /// Always chooses a reward by its ID upon quest completion.
     /// </summary>
     /// <param name="questId">The ID of the quest to load requirements from.</param>
@@ -5775,7 +5775,7 @@ public class CoreBots
     #endregion
     #endregion IsMonsterAlive
 
-    #region Utility    
+    #region Utility
 
     /// <summary>
     /// Checks whether the player is an Upholder
@@ -6078,8 +6078,8 @@ public class CoreBots
     /// Determines whether the bot should aggro monsters based on the presence of other players in the current map.
     /// </summary>
     /// <remarks>
-    /// The method checks if there are any players on the current map other than the bot. 
-    /// If other players are found, aggroing monsters is enabled, and players are hidden to reduce lag. 
+    /// The method checks if there are any players on the current map other than the bot.
+    /// If other players are found, aggroing monsters is enabled, and players are hidden to reduce lag.
     /// If no other players are found, aggroing monsters is disabled.
     /// </remarks>
     public void CanWeAggro()
@@ -6209,8 +6209,8 @@ public class CoreBots
 
     /// <summary>
     /// Logs the player out and attempts to relogin to the same or a suitable server.
-    /// Temporarily disables <c>Options.AutoRelogin</c>. If no preferred server is set or available, 
-    /// connects to the first available server based on membership, ensuring it's not a test realm, 
+    /// Temporarily disables <c>Options.AutoRelogin</c>. If no preferred server is set or available,
+    /// connects to the first available server based on membership, ensuring it's not a test realm,
     /// isn't full, and is online.
     /// </summary>
     /// <exception cref="InvalidOperationException">
@@ -6338,7 +6338,7 @@ public class CoreBots
     bool usingSoloGeneric = false;
     bool usingFarmGeneric = false;
     /// <summary>
-    /// Equips either the FarmClass or SoloClass from the CanChange section at the top of CoreBots 
+    /// Equips either the FarmClass or SoloClass from the CanChange section at the top of CoreBots
     /// </summary>
     /// <param name="classToUse">Type "ClassType." and then either Farm or Solo in order to select which type it should swap too</param>
     public void EquipClass(ClassType classToUse)
@@ -8327,11 +8327,11 @@ public class CoreBots
         while (!Bot.ShouldExit && !Bot.TempInv.Contains(itemID, quant))
         {
             Bot.Map.GetMapItem(itemID);
-            Bot.Wait.ForActionCooldown(GameActions.GetMapItem);
+            Sleep(1000);
             attempts++;
 
             // Safety stop in case of bugged item or wrong map
-            if (attempts > quant + 10 || Bot.TempInv.Contains(itemID, quant))
+            if (attempts > quant + 10)
                 break;
         }
 
