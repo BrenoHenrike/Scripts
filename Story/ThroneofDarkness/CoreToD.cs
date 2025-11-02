@@ -143,7 +143,7 @@ public class CoreToD
         }
 
         // Vaden Says
-        if(!Story.QuestProgression(4982))
+        if (!Story.QuestProgression(4982))
         {
             Core.EnsureAccept(4982);
             Core.KillMonster("bonecastle", "Enter", "Spawn", "Yellow, Green");
@@ -456,7 +456,7 @@ public class CoreToD
         Story.KillQuest(5095, "baconcat", new[] { "Fart Elemental", "Litter Elemental" });
 
         // King Strong
-        Story.KillQuest(5096, "baconcat", new[] { "Box", "King Strong", "King Strong" });
+        Story.KillQuest(5096, "baconcat", new[] { "King Strong", "Box", "King Strong" });
 
         // Snack Man!
         Story.MapItemQuest(5097, "baconcat", 4469, 4);
