@@ -6211,9 +6211,8 @@ public class CoreBots
             return;
 
         if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, " +
-        "click OK to open the Beta Release Channel (discord), if you get sent to the \"Welcome\" channel, click the ✅ to acess the rest of the channels, and find the `skua-beta-release` channel\n" +
-        "for the LATEST Beta Release(x64).", "Outdated Skua detected", "OK").Text == "OK")
-            Process.Start("explorer", "https://discord.com/channels/1090693457586176013/1420350375617232987");
+        "click OK to open the download page of the latest release", "Outdated Skua detected", "OK").Text == "OK")
+            Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases/latest");
         Logger($"This script requires Skua {targetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
     }
 
