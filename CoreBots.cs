@@ -131,7 +131,7 @@ public class CoreBots
         if (changeTo)
         {
             Bot.Events.ScriptStopping += CrashDetector;
-            SkuaVersionChecker("1.3.0.0");
+            SkuaVersionChecker();
 
             // Start the stopwatch for timing the script run
             _scriptStopwatch = Stopwatch.StartNew();
@@ -6205,14 +6205,14 @@ public class CoreBots
     /// Checks, and prompts for the latest Skua Version
     /// <param name="targetVersion">Current Skua Version to Check against</param>
     /// </summary>
-    private void SkuaVersionChecker(string targetVersion)
+    private void SkuaVersionChecker(string targetVersion = "1.3.0.2)
     {
         if (Bot.Version == null || Version.Parse(targetVersion).CompareTo(Bot.Version) <= 0)
             return;
 
         if (Bot.ShowMessageBox($"This script requires Skua {targetVersion} or above, " +
         "click OK to open the download page of the latest release", "Outdated Skua detected", "OK").Text == "OK")
-            Process.Start("explorer", "https://github.com/BrenoHenrike/Skua/releases/latest");
+            Process.Start("explorer", "https://github.com/auqw/Skua/releases/latest");
         Logger($"This script requires Skua {targetVersion} or above. Stopping the script", messageBox: true, stopBot: true);
     }
 
